@@ -4,11 +4,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
-import java.io.PrintStream;
 
+import static com.jaeeunna.util.InputOutputUtils.mockStandardInputOutputStream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("Program should handle")
@@ -61,14 +59,5 @@ class BowlingScoreBoardTest {
 
         final String expected = "----> [ERROR] unknown command\n";
         assertThat(out).asString().isEqualTo(expected);
-    }
-
-    private OutputStream mockStandardInputOutputStream(String input) {
-        final OutputStream out = new ByteArrayOutputStream();
-
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
-        System.setOut(new PrintStream(out));
-
-        return out;
     }
 }
